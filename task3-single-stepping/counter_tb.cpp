@@ -21,12 +21,14 @@ int main(int argc, char **argv, char **env) {
     if (vbdOpen() != 1) return -1;
     vbdHeader("Lab 1: Counter");
     vbdSetMode(1);
+    vbdClear();
 
     top->clk = 1;
     top->rst = 0;
     top->ld = 0;
 
     int half_cyc_counter = 0;
+
 
     for (i = 0; i < 300; i++) {
         if (vbdFlag() == 1) {
