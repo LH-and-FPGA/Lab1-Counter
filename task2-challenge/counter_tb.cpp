@@ -30,8 +30,8 @@ int main(int argc, char **argv, char **env) {
     bool prev_flag = vbdFlag();
 
     for (i = 0; i < 300; i++) {
-        top->rst = (i < 2) | (i == 15);
-        // top->en = (i > 4);
+        // top->rst = (i < 2) | (i == 15);
+        top->en = 1;
         if (vbdFlag() != prev_flag) { // on flag change
             top->rst = 1; // reset counter
             top->ctrl = !top->ctrl; // toggle control signal
