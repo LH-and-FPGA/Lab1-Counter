@@ -20,6 +20,8 @@ int main(int argc, char **argv, char **env) {
     top->rst = 1;
     top->en = 0;
 
+    int half_cyc_counter = 0;
+
     for (i = 0; i < 300; i++) {
         /* Task 1: Original code
         top->rst = (i < 2) | (i == 15);
@@ -38,7 +40,7 @@ int main(int argc, char **argv, char **env) {
         if (Verilated::gotFinish()) exit(0);
         */
 
-        
+        /* Task 1: Challenge 1
         if (i > 8 && i < 12) { // Be careful, the counter starts at 0, 
             top->en = 0;
             top->rst = 1; 
@@ -52,12 +54,23 @@ int main(int argc, char **argv, char **env) {
             top->clk = !top->clk;
             top->eval();
         }
+        */
 
-
-
-
-
-
+        top->en = 1;
+        top->rst = 0;
+        for (clk = 0; clk < 2; clk++) {
+            // TODO: Question about this part -- Challenge 2
+            // If I use the challenge 1 code, why is there still a half cycle delaly?
+            // Is it a good engineering practice to change the signal inside the half cycle?
+            if (half_cyc_counter > 18 && half_cyc_counter < 24) {
+                top->en = 0;
+                top->rst = 1;
+            }
+            tfp->dump(2*i+clk);
+            top->clk = !top->clk;
+            top->eval();
+            half_cyc_counter++;
+        }
     }
     tfp->close();
     exit(0);

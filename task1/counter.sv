@@ -7,7 +7,7 @@ module counter #(
     output logic [WIDTH-1:0] count
 );
 
-always_ff @(posedge clk) begin
+always_ff @(posedge clk, posedge rst) begin // Challenge 2: make it asynchronous
     if (rst) count <= {WIDTH{1'b0}};
     else count <= count + {{WIDTH-1{1'b0}}, en};
     // Task 1: At the rising edge of the clock, if reset is inactive and enable is 1, 
