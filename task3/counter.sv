@@ -3,17 +3,14 @@ module counter #(
 ) (
     input logic clk,
     input logic rst,
-    input logic en,
-    input logic ctrl, // Challenge: control signal to switch direction
+    input logic ld,
+    input logic [WIDTH-1:0] v,
     output logic [WIDTH-1:0] count
 );
 
 always_ff @(posedge clk, posedge rst) begin // Challenge 2: make it asynchronous
     if (rst) count <= {WIDTH{1'b0}};
-    else begin
-        if (ctrl) count <= count + {{WIDTH-1{1'b0}}, en};
-        else count <= count - {{WIDTH-1{1'b0}}, en}; // Decrement when ctrl is high
-    end
+    else     count <= ld ? v : count + {{WIDTH-1{1'b0}}, 1'b1};
 end
 
 endmodule
