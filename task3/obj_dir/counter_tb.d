@@ -1,9 +1,10 @@
 counter_tb.o: ../counter_tb.cpp Vcounter.h \
- /usr/share/verilator/include/verilated.h \
- /usr/share/verilator/include/verilatedos.h \
- /usr/share/verilator/include/verilated_config.h \
- /usr/share/verilator/include/verilated_types.h \
- /usr/share/verilator/include/verilated_funcs.h \
- /usr/share/verilator/include/verilated_vcd_c.h \
- /usr/share/verilator/include/verilated.h \
- /usr/share/verilator/include/verilated_trace.h ../vbuddy.cpp
+ /usr/local/share/verilator/include/verilated.h \
+ /usr/local/share/verilator/include/verilatedos.h \
+ /usr/local/share/verilator/include/verilated_config.h \
+ /usr/local/share/verilator/include/verilated_types.h \
+ /usr/local/share/verilator/include/verilated_funcs.h \
+ /usr/local/share/verilator/include/verilated_vcd_c.h \
+ /usr/local/share/verilator/include/verilated.h \
+ /usr/local/share/verilator/include/verilated_trace.h \
+ /usr/local/share/verilator/include/verilated_trace_defs.h ../vbuddy.cpp
